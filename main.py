@@ -1,19 +1,16 @@
-import app_products-part1
+import pg_script
 
 def main():
-    """
-    Run all three steps from the PostgreSQL + Python exercise
-    """
-    # Step 1: Create table
-    app_products.create_products_table()
+    # 1. Recreate the table to ensure the correct structure
+    pg_script.recreate_products_table()
 
-    # Step 2: Insert data
-    app_products.insert_sample_products()
+    # 2. insert sample rows
+    pg_script.insert_sample_products()
 
-    # Step 3: Select and print results
-    products = app_products.select_products()
+    # 3. select & print
+    products = pg_script.select_products()
 
-    print("\nProducts currently in stock:")
+    print("\nAvailable Products:")
     if not products:
         print("(no rows found)")
     else:
@@ -22,4 +19,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

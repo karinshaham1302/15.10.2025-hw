@@ -5,10 +5,16 @@ from psycopg2.extras import RealDictCursor
 # Database Setup
 
 def get_db_config():
+    """
+    Read database connection details from db_config.json file.
+    """
     with open('db_config.json') as f:
         return json.load(f)
 
 def get_connection():
+    """
+    Establish a connection to the PostgreSQL database using config file.
+    """
     config = get_db_config()
     return psycopg2.connect(**config)
 
